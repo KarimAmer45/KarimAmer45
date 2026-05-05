@@ -4,6 +4,10 @@ I am a Mobile Robotics M.Sc. student focused on ROS2, Python, computer vision, p
 
 My background combines robotics software with mechatronics, automation, electronics, and hands-on prototyping. I am especially interested in mobile robot autonomy, perception-driven systems, human supervision of robots, and field-ready experimental platforms.
 
+## Portfolio Note
+
+Some repositories here are older coursework, experiments, and hard-drive projects that I am cleaning up into a public robotics portfolio. I try to keep each README clear about what is implemented, what is simulated, and what still needs real-world validation.
+
 ## Current Focus
 
 - ROS2-based robot interfaces and command pipelines
@@ -13,16 +17,16 @@ My background combines robotics software with mechatronics, automation, electron
 - Computer vision for robot perception and pose estimation
 - Practical integration of sensors, motors, embedded control, and robot software
 
-## Selected Robotics Work
+## Selected Robotics Projects
 
-1. **[LLM-to-ROS2 Command Demo](https://github.com/KarimAmer45/llm_to_ros)**  
-   ROS2 tool-calling agent demo with turtlesim and Gazebo support, showing command mapping from high-level task input to robot actions.
+1. **[LLM-to-ROS2 Command Interface](https://github.com/KarimAmer45/llm_to_ros)**  
+   ROS2 tool-calling project with turtlesim and Gazebo support, focused on mapping high-level operator intent into bounded robot actions.
 
 2. **[ROS2 C++ Teleoperation Safety Node](https://github.com/KarimAmer45/ros2-cpp-teleop-safety-node)**  
    ROS2/C++ teleoperation safety project focused on supervised robot control, command limits, safety states, and operator-aware behavior.
 
-3. **[ROS2 Multi-Robot Coordination Demo](https://github.com/KarimAmer45/ros2-multi-robot-coordination-demo)**  
-   Experimental ROS2 demo for coordinating multiple mobile robots through shared state, task handling, and distributed robot behavior.
+3. **[ROS2 Multi-Robot Coordination](https://github.com/KarimAmer45/ros2-multi-robot-coordination-demo)**  
+   Experimental ROS2 project for coordinating multiple mobile robots through shared state, task handling, and distributed robot behavior.
 
 4. **[Mobile Robotics FastSLAM](https://github.com/KarimAmer45/mobile-robotics-fastslam)**  
    FastSLAM implementation with per-particle landmark EKFs and selective resampling for mobile robot mapping and localization.
@@ -30,8 +34,8 @@ My background combines robotics software with mechatronics, automation, electron
 5. **[Grid Path Planning with A*](https://github.com/KarimAmer45/grid-path-planning-astar)**  
    Grid path-planning implementation using BFS, A*, and weighted A* for obstacle-aware navigation.
 
-6. **[Camera Calibration and Pose Demo](https://github.com/KarimAmer45/camera-calibration-pose-demo)**  
-   Camera calibration and chessboard pose estimation demo with Gazebo simulation assets for robotics-relevant perception.
+6. **[Camera Calibration and Pose Estimation](https://github.com/KarimAmer45/camera-calibration-pose-demo)**  
+   Camera calibration and chessboard pose estimation project with Gazebo simulation assets for robotics-relevant perception.
 
 ## Additional Relevant Projects
 
