@@ -6,7 +6,7 @@ My background combines robotics software with mechatronics, automation, electron
 
 ## Portfolio Note
 
-Some repositories here are older coursework, experiments, and hard-drive projects that I am cleaning up into a public robotics portfolio. I try to keep each README clear about what is implemented, what is simulated, and what still needs real-world validation.
+Some repositories here are older coursework, experiments, and local projects that I recently organized into a public robotics portfolio. I try to keep each README clear about what is implemented, what is simulated, and what still needs real-world validation.
 
 ## Current Focus
 
