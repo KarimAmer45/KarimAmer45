@@ -31,8 +31,9 @@ Measured results and verified behaviors are linked to reproducible commands and 
 |---|---|:---:|
 | [C++ / MuJoCo Sim-to-Sim](https://github.com/KarimAmer45/cpp-gym-nav) | Same trained PPO policy · 100 held-out seeds · randomized domain · C++ kinematics vs. MuJoCo rigid-body contact | **Randomized: 43% → 55% success · 32% → 8% collision** |
 | [ROS 2–Unity Digital Twin](https://github.com/KarimAmer45/safety-aware-ros2-unity-digital-twin) | Live Gazebo → ROS 2 → Unity telemetry and deterministic safety watchdog | **28–30 Hz odom · 20 Hz safety status · ≤0.55 s stop bound** |
-| [BOP 6-DoF Pose Evaluation](https://github.com/KarimAmer45/bop-6d-pose-evaluation) | Deterministic LM-O RGB-D subset · FPFH + RANSAC + ICP · 391 instances | **0.3657 ADD(-S) recall · 0.5314 AUC · 467.90 ms** |
 | [LLM → ROS 2 Agent](https://github.com/KarimAmer45/llm_to_ros) | Natural-language goal → schema validation → safety clamp → deterministic ROS 2 execution | **Tool allowlist · turtlesim + Gazebo · JSONL audit trail** |
+| [BOP 6-DoF Pose Evaluation](https://github.com/KarimAmer45/bop-6d-pose-evaluation) | Deterministic LM-O RGB-D subset · FPFH + RANSAC + ICP · 391 instances | **0.3657 ADD(-S) recall · 0.5314 AUC · 467.90 ms** |
+| [BuzzSet YOLOV++](https://github.com/KarimAmer45/BuzzSet-org-videos) | Two-stage temporal detector on the four-class BuzzSet validation set | **7.8% → 26.8% mAP · 47.7% AP50** |
 | [ROS 2 C++ Safety Node](https://github.com/KarimAmer45/ros2-cpp-teleop-safety-node) | C++ safety-filter callback · 10 M iterations · `-O2` | **40 ns · 24 M calls/sec · 5 guard layers** |
 
 ---
@@ -63,15 +64,6 @@ Gazebo drives the TurtleBot3 while Unity mirrors pose and lidar. A deterministic
 <tr>
 <td align="center" width="50%">
 
-**[BOP 6-DoF Pose Evaluation](https://github.com/KarimAmer45/bop-6d-pose-evaluation)**
-
-Reproducible LM-O RGB-D evaluation with native ADD/ADD-S metrics, a classical FPFH–RANSAC–ICP baseline, failure accounting, and committed reports.
-
-![BOP LM-O pose-error distributions](https://raw.githubusercontent.com/KarimAmer45/bop-6d-pose-evaluation/main/docs/results/lmo_cpu_windows_2026-08-12/error_distributions.png)
-
-</td>
-<td align="center" width="50%">
-
 **[LLM → ROS 2 Command Interface](https://github.com/KarimAmer45/llm_to_ros)**
 
 A tool-calling agent translates operator intent into allowlisted, schema-validated, safety-clamped ROS 2 actions across turtlesim and Gazebo backends.
@@ -79,15 +71,33 @@ A tool-calling agent translates operator intent into allowlisted, schema-validat
 ![LLM to ROS command demonstration](https://raw.githubusercontent.com/KarimAmer45/llm_to_ros/main/docs/demo.gif)
 
 </td>
+<td align="center" width="50%">
+
+**[BOP 6-DoF Pose Evaluation](https://github.com/KarimAmer45/bop-6d-pose-evaluation)**
+
+Reproducible LM-O RGB-D evaluation with native ADD/ADD-S metrics, a classical FPFH–RANSAC–ICP baseline, failure accounting, and committed reports.
+
+![BOP LM-O pose-error distributions](https://raw.githubusercontent.com/KarimAmer45/bop-6d-pose-evaluation/main/docs/results/lmo_cpu_windows_2026-08-12/error_distributions.png)
+
+</td>
 </tr>
 <tr>
-<td align="center" colspan="2">
+<td align="center" width="50%">
+
+**[BuzzSet Temporal Video Object Detection](https://github.com/KarimAmer45/BuzzSet-org-videos)**
+
+YOLOV++ temporal aggregation and YOLOX-Swin experiments improved four-class pollinator detection while exposing class-level failure patterns.
+
+![BuzzSet model comparison](https://raw.githubusercontent.com/KarimAmer45/BuzzSet-org-videos/main/assets/model_comparison.png)
+
+</td>
+<td align="center" width="50%">
 
 **[ROS 2 C++ Teleoperation Safety Node](https://github.com/KarimAmer45/ros2-cpp-teleop-safety-node)**
 
 Five independent C++ guard layers—velocity clamp, acceleration limit, deadman timeout, e-stop, and obstacle stop—running live in Gazebo Sim.
 
-<img src="https://raw.githubusercontent.com/KarimAmer45/ros2-cpp-teleop-safety-node/main/docs/demo.gif" alt="ROS 2 C++ safety-node demonstration" width="70%">
+![ROS 2 C++ safety-node demonstration](https://raw.githubusercontent.com/KarimAmer45/ros2-cpp-teleop-safety-node/main/docs/demo.gif)
 
 </td>
 </tr>
@@ -103,10 +113,10 @@ Five independent C++ guard layers—velocity clamp, acceleration limit, deadman 
 |---|---|---|
 | 🔵 | **[C++ / MuJoCo Navigation](https://github.com/KarimAmer45/cpp-gym-nav)** | C++17 + pybind11 + Gymnasium · PPO · 860k steps/s native batch · domain randomization · sim-to-sim transfer |
 | 🔵 | **[Safety-Aware ROS 2–Unity Digital Twin](https://github.com/KarimAmer45/safety-aware-ros2-unity-digital-twin)** | ROS 2 + Unity + Gazebo · C# · lidar fault injection · deterministic safety supervision · 16/16 tests |
-| 🔵 | **[BOP 6-DoF Pose Benchmark](https://github.com/KarimAmer45/bop-6d-pose-evaluation)** | BOP/LM-O RGB-D harness · ADD/ADD-S · FPFH + RANSAC + ICP · deterministic reports · Docker + CI |
 | 🔵 | **[LLM → ROS 2 Command Interface](https://github.com/KarimAmer45/llm_to_ros)** | Tool-calling · safety clamp · schema validation · JSONL logging · turtlesim + Gazebo |
-| 🔵 | **[ROS 2 C++ Teleoperation Safety Node](https://github.com/KarimAmer45/ros2-cpp-teleop-safety-node)** | 5 guard layers · 40 ns callback · CMake · CI · Gazebo Sim · 11 YAML params |
+| 🔵 | **[BOP 6-DoF Pose Benchmark](https://github.com/KarimAmer45/bop-6d-pose-evaluation)** | BOP/LM-O RGB-D harness · ADD/ADD-S · FPFH + RANSAC + ICP · deterministic reports · Docker + CI |
 | 🔵 | **[BuzzSet YOLOV++](https://github.com/KarimAmer45/BuzzSet-org-videos)** | 4-class pollinator video detection · YOLOV++ temporal pipeline · YOLOX-Swin · RF-DETR comparison · COCO AP |
+| 🔵 | **[ROS 2 C++ Teleoperation Safety Node](https://github.com/KarimAmer45/ros2-cpp-teleop-safety-node)** | 5 guard layers · 40 ns callback · CMake · CI · Gazebo Sim · 11 YAML params |
 | 🔵 | **[NavViz Unreal](https://github.com/KarimAmer45/navviz-unreal)** | Unreal Engine 5 C++ renderer · PPO world-state streaming over TCP/JSON · real-time 3D visualization |
 | 🔵 | **[GNSS-Denied Visual-Inertial Localization](https://github.com/KarimAmer45/gnss-denied-visual-inertial-localization)** | EKF sensor fusion · Docker · ROS 2 C++ wrapper · regression tests · 0.24 m outage RMSE |
 | 🔵 | **[Explainable Vision Demo](https://github.com/KarimAmer45/explainable-vision-demo)** | ResNet · EfficientNet · ViT · GradCAM · attention rollout · 3 Streamlit apps · CI |
