@@ -2,9 +2,9 @@
 
 # Karim Amer
 
-**Mobile Robotics M.Sc. · ROS 2 · C++ · Python · Computer Vision**
+**M.Sc. Mobile Robotics · Robot Learning · Simulation · 3D Vision · C++ / Python**
 
-Building production-quality robot software: sensor fusion, safety systems, LLM-to-robot interfaces, and ML perception pipelines.
+Building reproducible robotics and perception systems: high-throughput simulation, sim-to-sim transfer, 6D pose evaluation, video object detection, sensor fusion, and safety.
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/karim-amer-0546a2213/)
 [![Email](https://img.shields.io/badge/Email-karimamer456%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:karimamer456@gmail.com)
@@ -115,14 +115,14 @@ Coordinator and agent nodes with namespaced topics, dynamic waypoint assignment,
 
 | | Project | Highlights |
 |---|---|---|
+| 🔵 | **[C++ Gym Navigation](https://github.com/KarimAmer45/cpp-gym-nav)** | C++17 + pybind11 + Gymnasium · PPO · 860k steps/s native batch · MuJoCo transfer · Unreal bridge |
+| 🔵 | **[BOP 6-DoF Pose Benchmark](https://github.com/KarimAmer45/bop-6d-pose-evaluation)** | BOP/LM-O RGB-D harness · ADD/ADD-S · FPFH + RANSAC + ICP · deterministic reports · Docker + CI |
+| 🔵 | **[BuzzSet YOLOV++](https://github.com/KarimAmer45/BuzzSet-org-videos)** | 4-class pollinator video detection · YOLOV++ temporal pipeline · YOLOX-Swin · RF-DETR comparison · COCO AP |
+| 🔵 | **[NavViz Unreal](https://github.com/KarimAmer45/navviz-unreal)** | Unreal Engine 5 C++ renderer · PPO world-state streaming over TCP/JSON · real-time 3D visualization |
 | 🔵 | **[GNSS-Denied Visual-Inertial Localization](https://github.com/KarimAmer45/gnss-denied-visual-inertial-localization)** | EKF sensor fusion · Docker · ROS 2 C++ wrapper · regression tests · 0.24 m outage RMSE |
 | 🔵 | **[ROS 2 C++ Teleoperation Safety Node](https://github.com/KarimAmer45/ros2-cpp-teleop-safety-node)** | 5 guard layers · 40 ns callback · CMake · CI · Gazebo Sim · 11 YAML params |
 | 🔵 | **[LLM → ROS 2 Command Interface](https://github.com/KarimAmer45/llm_to_ros)** | Tool-calling · safety clamp · schema validation · JSONL logging · turtlesim + Gazebo |
 | 🔵 | **[Explainable Vision Demo](https://github.com/KarimAmer45/explainable-vision-demo)** | ResNet · EfficientNet · ViT · GradCAM · attention rollout · 3 Streamlit apps · CI |
-| 🔵 | **[C++ Mobile Robot Kinematics](https://github.com/KarimAmer45/cpp-mobile-robot-kinematics)** | Diff drive · mecanum · Ackermann · SE(2) · 74 M calls/sec · header-only C++17 |
-| 🔵 | **[Jetson-Ready ROS 2 Object Detection](https://github.com/KarimAmer45/jetson-ready-ros2-object-detection)** | Torchvision + YOLO · Dockerfile · Ansible · DiagnosticStatus · Jetson build arg |
-| 🔵 | **[Visual SLAM Evaluation — KITTI / EuRoC](https://github.com/KarimAmer45/visual-slam-evaluation-kitti-euroc)** | KITTI + EuRoC loaders · ORB VO · Umeyama alignment · ATE/RMSE · Docker |
-| 🔵 | **[2D Occupancy Grid A\* Visualizer](https://github.com/KarimAmer45/occupancy-grid-astar-visualizer)** | Vanilla JS · npm tests · interactive editor · optional ROS 2 Gazebo Sim bridge |
 
 ---
 
