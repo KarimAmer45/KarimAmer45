@@ -18,10 +18,6 @@ Building reproducible robotics and perception systems: high-throughput simulatio
 ![Ansible](https://img.shields.io/badge/Ansible-EE0000?style=flat-square&logo=ansible&logoColor=white)
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black)
 
-<br/>
-
-[![GitHub stats](https://github-readme-stats.vercel.app/api?username=KarimAmer45&show_icons=true&theme=tokyonight&hide_border=true&rank_icon=github)](https://github.com/KarimAmer45)
-[![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=KarimAmer45&layout=compact&theme=tokyonight&hide_border=true&langs_count=6)](https://github.com/KarimAmer45)
 
 </div>
 
