@@ -2,7 +2,7 @@
 
 # Karim Amer
 
-**M.Sc. Mobile Robotics · Robot Learning · Simulation · 3D Vision · C++ / Python**
+**M.Sc. Mobile Robotics · Physical AI · Robot Learning · Simulation · 3D Vision · C++ / Python**
 
 Building reproducible robotics and perception systems: high-throughput simulation, sim-to-sim transfer, 6D pose evaluation, video object detection, sensor fusion, and safety.
 
@@ -29,16 +29,15 @@ Building reproducible robotics and perception systems: high-throughput simulatio
 
 ## Benchmarks at a Glance
 
-All numbers are reproducible — each repo README has the exact command.
+Measured results and verified behaviors are linked to reproducible commands and committed artifacts in each repository.
 
-| Project | What was measured | Result |
+| Project | What was measured or verified | Result |
 |---|---|:---:|
-| [GNSS-Denied VIO](https://github.com/KarimAmer45/gnss-denied-visual-inertial-localization) | EKF position RMSE vs. dead-reckoning over a 34 s outage | **0.24 m** vs. 26.65 m · 99.1% better |
-| [ROS 2 Safety Node](https://github.com/KarimAmer45/ros2-cpp-teleop-safety-node) | C++ safety-filter callback · 10 M iterations · `-O2` | **40 ns · 24 M calls/sec** |
-| [C++ Kinematics](https://github.com/KarimAmer45/cpp-mobile-robot-kinematics) | Differential drive inverse kinematics throughput | **74 M calls/sec · 13.6 ns/call** |
-| [C++ Grid Planner](https://github.com/KarimAmer45/cpp-grid-path-planner) | A\* vs. Dijkstra on a 500 × 500 grid | **11.3× faster · 15.6 ms vs. 176 ms** |
-| [Explainable Vision](https://github.com/KarimAmer45/explainable-vision-demo) | ViT-B/16 fine-tuned on CIFAR-10 airplane vs. ship | **98% accuracy · AUC 0.994 · mAP 0.993** |
-| [Pose Estimation](https://github.com/KarimAmer45/camera-calibration-pose-demo) | solvePnP on 30 synthetic chessboard frames | **214 FPS · 4.0 ms median** |
+| [C++ / MuJoCo Sim-to-Sim](https://github.com/KarimAmer45/cpp-gym-nav) | Same trained PPO policy · 100 held-out seeds · C++ kinematics vs. MuJoCo rigid-body contact | **37% → 52% success · 15 pp gap · 39% → 8% collision** |
+| [ROS 2–Unity Digital Twin](https://github.com/KarimAmer45/safety-aware-ros2-unity-digital-twin) | Live Gazebo → ROS 2 → Unity telemetry and deterministic safety watchdog | **28–30 Hz odom · 20 Hz safety status · ≤0.55 s stop bound** |
+| [BOP 6-DoF Pose Evaluation](https://github.com/KarimAmer45/bop-6d-pose-evaluation) | Deterministic LM-O RGB-D subset · FPFH + RANSAC + ICP · 391 instances | **0.3657 ADD(-S) recall · 0.5314 AUC · 467.90 ms** |
+| [LLM → ROS 2 Agent](https://github.com/KarimAmer45/llm_to_ros) | Natural-language goal → schema validation → safety clamp → deterministic ROS 2 execution | **Tool allowlist · turtlesim + Gazebo · JSONL audit trail** |
+| [ROS 2 C++ Safety Node](https://github.com/KarimAmer45/ros2-cpp-teleop-safety-node) | C++ safety-filter callback · 10 M iterations · `-O2` | **40 ns · 24 M calls/sec · 5 guard layers** |
 
 ---
 
@@ -48,60 +47,51 @@ All numbers are reproducible — each repo README has the exact command.
 <tr>
 <td align="center" width="50%">
 
-**[GNSS-Denied Visual-Inertial Localization](https://github.com/KarimAmer45/gnss-denied-visual-inertial-localization)**
+**[C++ / MuJoCo Sim-to-Sim Transfer](https://github.com/KarimAmer45/cpp-gym-nav)**
 
-EKF fusing IMU, visual odometry, and wheel odometry keeps the trajectory tight while dead-reckoning drifts 26 m during a 34-second satellite blackout.
+The same seeded navigation task runs in a fast C++ kinematic backend and MuJoCo rigid-body simulation. A checked-in 100-seed transfer run exposes the success and collision gap directly.
 
-![Trajectory overview](https://raw.githubusercontent.com/KarimAmer45/gnss-denied-visual-inertial-localization/main/results/example/trajectory_overview.png)
+![C++ and MuJoCo transfer on the same seeded navigation task](https://raw.githubusercontent.com/KarimAmer45/cpp-gym-nav/master/assets/generated/sim-to-sim/transfer_trained_cpp.gif)
 
 </td>
 <td align="center" width="50%">
 
-**[ROS 2 C++ Teleoperation Safety Node](https://github.com/KarimAmer45/ros2-cpp-teleop-safety-node)**
+**[Safety-Aware ROS 2–Unity Digital Twin](https://github.com/KarimAmer45/safety-aware-ros2-unity-digital-twin)**
 
-Five independent C++ guard layers — velocity clamp, acceleration limit, deadman timeout, e-stop, and obstacle stop — running live in Gazebo Sim.
+Gazebo drives the TurtleBot3 while Unity mirrors pose and lidar. A deterministic supervisor demonstrates obstacle stops, frozen-scan handling, and operator e-stop behavior.
 
-![Safety node demo](https://raw.githubusercontent.com/KarimAmer45/ros2-cpp-teleop-safety-node/main/docs/demo.gif)
+![Gazebo and Unity digital-twin demonstration](https://raw.githubusercontent.com/KarimAmer45/safety-aware-ros2-unity-digital-twin/main/docs/demo.gif)
 
 </td>
 </tr>
 <tr>
+<td align="center" width="50%">
+
+**[BOP 6-DoF Pose Evaluation](https://github.com/KarimAmer45/bop-6d-pose-evaluation)**
+
+Reproducible LM-O RGB-D evaluation with native ADD/ADD-S metrics, a classical FPFH–RANSAC–ICP baseline, failure accounting, and committed reports.
+
+![BOP LM-O pose-error distributions](https://raw.githubusercontent.com/KarimAmer45/bop-6d-pose-evaluation/main/docs/results/lmo_cpu_windows_2026-08-12/error_distributions.png)
+
+</td>
 <td align="center" width="50%">
 
 **[LLM → ROS 2 Command Interface](https://github.com/KarimAmer45/llm_to_ros)**
 
-Tool-calling agent translates natural language operator intent into schema-validated, safety-clamped ROS 2 actions across turtlesim and Gazebo backends.
+A tool-calling agent translates operator intent into allowlisted, schema-validated, safety-clamped ROS 2 actions across turtlesim and Gazebo backends.
 
-![LLM to ROS demo](https://raw.githubusercontent.com/KarimAmer45/llm_to_ros/main/docs/demo.gif)
-
-</td>
-<td align="center" width="50%">
-
-**[Explainable Vision Demo](https://github.com/KarimAmer45/explainable-vision-demo)**
-
-ResNet, EfficientNet, and ViT-B/16 training with GradCAM and attention-rollout overlays. Streamlit UI for interactive inference and explainability inspection.
-
-![GradCAM example](https://raw.githubusercontent.com/KarimAmer45/explainable-vision-demo/main/docs/screenshots/gradcam_example.png)
+![LLM to ROS command demonstration](https://raw.githubusercontent.com/KarimAmer45/llm_to_ros/main/docs/demo.gif)
 
 </td>
 </tr>
 <tr>
-<td align="center" width="50%">
+<td align="center" colspan="2">
 
-**[UAV Building Footprint Extraction](https://github.com/KarimAmer45/uav-building-footprint-extraction)**
+**[ROS 2 C++ Teleoperation Safety Node](https://github.com/KarimAmer45/ros2-cpp-teleop-safety-node)**
 
-K-means coarse mask followed by MRF energy minimisation and polygon vectorisation from UAV aerial imagery.
+Five independent C++ guard layers—velocity clamp, acceleration limit, deadman timeout, e-stop, and obstacle stop—running live in Gazebo Sim.
 
-![UAV footprint overlay](https://raw.githubusercontent.com/KarimAmer45/uav-building-footprint-extraction/main/data/img_mosaic_overlay_polys.png)
-
-</td>
-<td align="center" width="50%">
-
-**[ROS 2 Multi-Robot Coordination](https://github.com/KarimAmer45/ros2-multi-robot-coordination-demo)**
-
-Coordinator and agent nodes with namespaced topics, dynamic waypoint assignment, and Gazebo Sim integration.
-
-![Multi-robot demo](https://raw.githubusercontent.com/KarimAmer45/ros2-multi-robot-coordination-demo/main/docs/demo.gif)
+<img src="https://raw.githubusercontent.com/KarimAmer45/ros2-cpp-teleop-safety-node/main/docs/demo.gif" alt="ROS 2 C++ safety-node demonstration" width="70%">
 
 </td>
 </tr>
@@ -111,17 +101,18 @@ Coordinator and agent nodes with namespaced topics, dynamic waypoint assignment,
 
 ## Selected Projects
 
-> **Navigation:** the repos below are the ones worth clicking first. The `mobile-robotics-*` cluster are algorithm study implementations — listed further down under Probabilistic Robotics.
+> These are the strongest end-to-end systems and measured benchmarks; the `mobile-robotics-*` algorithm studies are grouped farther down.
 
 | | Project | Highlights |
 |---|---|---|
-| 🔵 | **[C++ Gym Navigation](https://github.com/KarimAmer45/cpp-gym-nav)** | C++17 + pybind11 + Gymnasium · PPO · 860k steps/s native batch · MuJoCo transfer · Unreal bridge |
+| 🔵 | **[C++ / MuJoCo Navigation](https://github.com/KarimAmer45/cpp-gym-nav)** | C++17 + pybind11 + Gymnasium · PPO · 860k steps/s native batch · domain randomization · sim-to-sim transfer |
+| 🔵 | **[Safety-Aware ROS 2–Unity Digital Twin](https://github.com/KarimAmer45/safety-aware-ros2-unity-digital-twin)** | ROS 2 + Unity + Gazebo · C# · lidar fault injection · deterministic safety supervision · 16/16 tests |
 | 🔵 | **[BOP 6-DoF Pose Benchmark](https://github.com/KarimAmer45/bop-6d-pose-evaluation)** | BOP/LM-O RGB-D harness · ADD/ADD-S · FPFH + RANSAC + ICP · deterministic reports · Docker + CI |
+| 🔵 | **[LLM → ROS 2 Command Interface](https://github.com/KarimAmer45/llm_to_ros)** | Tool-calling · safety clamp · schema validation · JSONL logging · turtlesim + Gazebo |
+| 🔵 | **[ROS 2 C++ Teleoperation Safety Node](https://github.com/KarimAmer45/ros2-cpp-teleop-safety-node)** | 5 guard layers · 40 ns callback · CMake · CI · Gazebo Sim · 11 YAML params |
 | 🔵 | **[BuzzSet YOLOV++](https://github.com/KarimAmer45/BuzzSet-org-videos)** | 4-class pollinator video detection · YOLOV++ temporal pipeline · YOLOX-Swin · RF-DETR comparison · COCO AP |
 | 🔵 | **[NavViz Unreal](https://github.com/KarimAmer45/navviz-unreal)** | Unreal Engine 5 C++ renderer · PPO world-state streaming over TCP/JSON · real-time 3D visualization |
 | 🔵 | **[GNSS-Denied Visual-Inertial Localization](https://github.com/KarimAmer45/gnss-denied-visual-inertial-localization)** | EKF sensor fusion · Docker · ROS 2 C++ wrapper · regression tests · 0.24 m outage RMSE |
-| 🔵 | **[ROS 2 C++ Teleoperation Safety Node](https://github.com/KarimAmer45/ros2-cpp-teleop-safety-node)** | 5 guard layers · 40 ns callback · CMake · CI · Gazebo Sim · 11 YAML params |
-| 🔵 | **[LLM → ROS 2 Command Interface](https://github.com/KarimAmer45/llm_to_ros)** | Tool-calling · safety clamp · schema validation · JSONL logging · turtlesim + Gazebo |
 | 🔵 | **[Explainable Vision Demo](https://github.com/KarimAmer45/explainable-vision-demo)** | ResNet · EfficientNet · ViT · GradCAM · attention rollout · 3 Streamlit apps · CI |
 
 ---
@@ -152,8 +143,9 @@ Coordinator and agent nodes with namespaced topics, dynamic waypoint assignment,
 
 ## Technical Skills
 
-**Robotics:** ROS 2, `rclcpp`, `rclpy`, `colcon`, Gazebo Sim, `nav_msgs`, `sensor_msgs`, `tf2`  
-**Languages:** Python · C++17 · JavaScript · MATLAB · Bash  
+**Simulation & Physical AI:** MuJoCo, Gymnasium, Gazebo, Unity, Unreal Engine, PPO, domain randomization, sim-to-sim transfer, reduced-order modeling  
+**Robotics:** ROS 2, `rclcpp`, `rclpy`, `colcon`, `nav_msgs`, `sensor_msgs`, `tf2`  
+**Languages:** Python, C++17, C#, JavaScript, MATLAB, Bash  
 **ML / Vision:** PyTorch · OpenCV · scikit-learn · Streamlit · GradCAM · SLAM  
 **Infra:** Docker · Ansible · Jenkins · GitHub Actions · FastAPI  
 **Hardware:** Arduino · PCB design · PLC/SCADA · embedded sensors and motor control
@@ -172,7 +164,7 @@ Coordinator and agent nodes with namespaced topics, dynamic waypoint assignment,
 
 ## Contact
 
-Open to research assistant roles, thesis opportunities, and robotics engineering positions involving ROS 2, perception, planning, or teleoperation.
+Open to research assistant, thesis, and robotics engineering opportunities in Physical AI, robot learning, simulation, perception, and safety-aware autonomy.
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Karim_Amer-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/karim-amer-0546a2213/)
 [![Email](https://img.shields.io/badge/Email-karimamer456%40gmail.com-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:karimamer456@gmail.com)
