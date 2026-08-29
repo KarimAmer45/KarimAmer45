@@ -29,7 +29,7 @@ Measured results and verified behaviors are linked to reproducible commands and 
 
 | Project | What was measured or verified | Result |
 |---|---|:---:|
-| [C++ / MuJoCo Sim-to-Sim](https://github.com/KarimAmer45/cpp-gym-nav) | Same trained PPO policy · 100 held-out seeds · C++ kinematics vs. MuJoCo rigid-body contact | **37% → 52% success · 15 pp gap · 39% → 8% collision** |
+| [C++ / MuJoCo Sim-to-Sim](https://github.com/KarimAmer45/cpp-gym-nav) | Same trained PPO policy · 100 held-out seeds · randomized domain · C++ kinematics vs. MuJoCo rigid-body contact | **Randomized: 43% → 55% success · 32% → 8% collision** |
 | [ROS 2–Unity Digital Twin](https://github.com/KarimAmer45/safety-aware-ros2-unity-digital-twin) | Live Gazebo → ROS 2 → Unity telemetry and deterministic safety watchdog | **28–30 Hz odom · 20 Hz safety status · ≤0.55 s stop bound** |
 | [BOP 6-DoF Pose Evaluation](https://github.com/KarimAmer45/bop-6d-pose-evaluation) | Deterministic LM-O RGB-D subset · FPFH + RANSAC + ICP · 391 instances | **0.3657 ADD(-S) recall · 0.5314 AUC · 467.90 ms** |
 | [LLM → ROS 2 Agent](https://github.com/KarimAmer45/llm_to_ros) | Natural-language goal → schema validation → safety clamp → deterministic ROS 2 execution | **Tool allowlist · turtlesim + Gazebo · JSONL audit trail** |
